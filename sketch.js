@@ -1,3 +1,12 @@
+//var array3 =[[2,4,0],"hi",[4,6,7],[8,10,15,35],12]
+//console.log(array3[1])
+
+//array3.push("aryaman");
+//console.log(array3);
+
+//array3.pop();
+//console.log(array3);
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,6 +16,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
+var gameState = "onSling"
 
 
 function preload() {
@@ -69,12 +79,15 @@ function draw(){
 }
 
 function mouseDragged(){
+   if(gameState !== "Launched"){
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+   }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "Launched"
 }
 
 function keyPressed(){
